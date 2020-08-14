@@ -28,7 +28,11 @@ h1, h2, h3, h4 {
 }
 
 .date {
-    color: #828282;
+    background: url('https://previews.123rf.com/images/happychinchilla/happychinchilla1903/happychinchilla190300022/124729200-vector-colorful-geometric-shapes-seamless-pattern-background-perfect-for-textile-https://encrypted-tbn0.gstatic.com/imahes?q=tbn%3AANd9GcRq6AB6te0hpKmeyAHXqqksY_JNongme5344A-fashion-prin.jpg');
+    font-size: 200px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: rgba(0,0,0,.2);
 }
 
 .save {
