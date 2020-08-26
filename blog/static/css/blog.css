@@ -1,42 +1,60 @@
-h1 a, h2 a {
+h1 a {
     color: #C25100;
-    font-family: 'Bungee Shade';
+    font-family: 'Bungee';
 
+}
+
+h2 a {
+    font-family: 'Nixie One', cursive;
+    font-size: 30pt
 }
 
 body {
-    padding-left: 15px;
+    padding-left: 0px;
 }
 
 .page-header {
-    background-color: #C25100;
+    background-color: #000000;
+    background: url('https://image.freepik.com/free-photo/brown-marble-texture-background-abstract-marble-texture_34936-402.jpg');
     margin-top: 0;
-    padding: 20px 20px 20px 40px;
+    padding: 40px 40px 40px 60px;
 }
+
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     
-    font-size: 100pt;
-    text-decoration: none;
-
-
-    background: url('https://media.tenor.com/images/e7ea6e3f0f91afc620a50d7742bfd837/tenor.gif');
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: rgba(0,0,0,.2);
+    font-size: 50pt;
+    text-align: center;
+    color: rgb(206, 206, 206);
 }
+
 
 .content { 
     margin-left: 40px;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
-    
+    font-family: 'Forum', cursive;
+    font-size: 50pt;
+}
+
+p {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    text-align: justify;
 }
 
 .date {
     color: #828282;
+    font-size: large;
+    font-family: 'Forum', cursive;
+    text-align: right;
+}
+
+.date p {
+    color: #828282;
+    font-size: large;
+    font-family: 'Forum', cursive;
 }
 
 .save {
