@@ -28,6 +28,12 @@ body {
     color: rgb(206, 206, 206);
 }
 
+.page-tabs h1, .page-tabs h1 a, .page-tabs h1 a:visited, .page-tabs h1 a:active {
+    font-family: 'Bungee';
+    font-size: 15pt;
+    text-align: center;
+    color: #555555;
+}
 
 .content { 
     margin-left: 40px;
@@ -66,7 +72,7 @@ p {
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
+    color: #555555;
     float: right; 
     font-size: 26pt;
     margin-right: 20px;
