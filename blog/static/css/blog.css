@@ -4,7 +4,7 @@ h1 a {
 
 }
 
-h2 a {
+h2 a, .cv_title h2 {
     font-family: 'Nixie One', cursive;
     font-size: 30pt
 }
@@ -87,8 +87,13 @@ p {
 }
 
 .cv_name h1 {
-    font-size: 26pt;
-    color: #ff0000;
+    font-size: 50pt;
+    text-align: center;
+    color: #000000;
+}
+
+.cv_title, .cv_text p {
+    text-align: center;
 }
 
 .post h2 a, .post h2 a:visited {
