@@ -82,6 +82,15 @@ p {
     margin-bottom: 70px;
 }
 
+.cv {
+    margin-bottom: 70px;
+}
+
+.cv_name h1 {
+    font-size: 26pt;
+    color: #ff0000;
+}
+
 .post h2 a, .post h2 a:visited {
     color: #000000;
 }

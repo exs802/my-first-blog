@@ -1,12 +1,19 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+    
+        <div class="cv">
+            <div class="cv_name">
+                <h1>Eni Segun CV</h1>
+            </div>
 
-        <div class="post">
-            
-            <h2>MY CV</h2>
-
-            <p>does this work</p>
+        {% for cv_section in cv %}
+            <div class="cv_title">
+                <h2>{{ cv_section.title }}</h2>
+            </div>
+            <div class="cv_text">
+                <p>{{ cv_section.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
         </div>
-
 {% endblock %}

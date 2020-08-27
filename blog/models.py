@@ -13,3 +13,8 @@ class Post(models.Model):
         self.save()
     def __str__(self):
         return self.title
+
+class CVItem(models.Model):
+    title = models.CharField(max_length=200)
+    text = models.TextField(default='')
+    to_from = models.DateTimeField(blank=True, null=True)
