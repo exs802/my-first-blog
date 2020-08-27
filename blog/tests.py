@@ -25,6 +25,10 @@ class CVPageTest(TestCase):
         self.assertIn('Education', response.content.decode())
         self.assertIn('GCSE', response.content.decode())
         self.assertIn('Townley Grammar', response.content.decode())
+    
+    def test_uses_edit_cv_template(self):
+        response = self.client.get('/editcv/')
+        self.assertTemplateUsed(response, 'blog/edit_cv.html')
 
 
 class ItemModelTest(TestCase):

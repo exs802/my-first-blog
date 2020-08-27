@@ -50,3 +50,6 @@ def show_cv(request):
     cv = CVItem.objects.all()
     return render(request, 'blog/show_cv.html', {'cv': cv})
 
+def edit_cv(request):
+    return render(request, 'blog/edit_cv.html')
+
