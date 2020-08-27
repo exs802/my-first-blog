@@ -27,7 +27,8 @@ class CVPageTest(TestCase):
         self.assertIn('Townley Grammar', response.content.decode())
     
     def test_uses_edit_cv_template(self):
-        response = self.client.get('/editcv/')
+        CVItem.objects.create(title='Qualifications', text='GCSE')
+        response = self.client.get('/editcv/1/')
         self.assertTemplateUsed(response, 'blog/edit_cv.html')
 
 

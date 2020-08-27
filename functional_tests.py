@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 import unittest
 
@@ -26,14 +27,17 @@ class NewVisitorTest(unittest.TestCase):
         editbox.click()
         time.sleep(1)
 
-        inputbox = self.browser.find_element_by_class_name('post-form')
-        inputbox.send_keys('I have edited my CV')
-
-        savebtn = self.browser.find_element_by_id('save btn btn-default')
-        savebtn.click()
+        inputbox = self.browser.find_element_by_class_name('cv-form')
+        
+        actions = ActionChains(self.browser)
+        actions.click(inputbox)
+        actions.key_down(Keys.COMMAND).send_keys('a').send_keys(Keys.BACKSPACE).key_up(Keys.COMMAND)
+        actions.send_keys('I have edited my CV')
+        actions.perform()
+        inputbox.submit()
         time.sleep(1)
 
-        self.assertIn('I have edited my CV', self.browser.find_element_by_class_name('cv_text'))
+        self.assertIn('I have edited my CV', self.browser.find_element_by_class_name('cv_text').text)
 
 if __name__ == '__main__':  
     unittest.main(warnings='ignore')  

@@ -67,7 +67,7 @@ p {
     float: right;
 }
 
-.post-form textarea, .post-form input {
+.post-form textarea, .post-form input, .cv-form textarea, .cv-form input {
     width: 100%;
 }
 

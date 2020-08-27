@@ -8,6 +8,11 @@
             </div>
 
         {% for cv_section in cv %}
+
+        <!-- if user.is_authenticated --> 
+            <a class="btn btn-default" id="id_edit_section" href="{% url 'edit_cv' pk=cv_section.pk%}"><span class="glyphicon glyphicon-pencil" ></span></a>
+        <!-- endif -->
+
             <div class="cv_title">
                 <h2>{{ cv_section.title }}</h2>
             </div>

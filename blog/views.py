@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import Post, CVItem
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm
+from .forms import PostForm, CVForm
 from django.shortcuts import redirect
 
 
@@ -50,6 +50,16 @@ def show_cv(request):
     cv = CVItem.objects.all()
     return render(request, 'blog/show_cv.html', {'cv': cv})
 
-def edit_cv(request):
-    return render(request, 'blog/edit_cv.html')
+def edit_cv(request, pk):
+    cvsection = get_object_or_404(CVItem, pk=pk)
+
+    if request.method == "POST":
+        form = CVForm(request.POST, instance=cvsection)
+        if form.is_valid():
+            cvsection = form.save(commit=False)
+            cvsection.save()
+            return redirect('show_cv')
+    else:
+        form = CVForm(instance=cvsection)
+    return render(request, 'blog/edit_cv.html', {'form' : form})
 
