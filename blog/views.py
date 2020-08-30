@@ -1,9 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Post, CVItem
-from django.shortcuts import render, get_object_or_404
 from .forms import PostForm, CVForm, NewCVForm
-from django.shortcuts import redirect
 
 
 # Create your views here.

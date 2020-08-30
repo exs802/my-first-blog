@@ -1,19 +1,23 @@
-from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time
+import unittest
+from blog.models import CVItem
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
 
     def tearDown(self):
+        editedSection = CVItem.objects.get(text='I have edited my CV')
+        editedSection.text = "email: exs802@studetn.bham.ac.uk"
+        editedSection.save()
         self.browser.quit()
 
     def test_can_edit_and_save_cv(self):
-        self.browser.get(self.live_server_url)
+        self.browser.get('http://localhost:8000')
 
         self.assertIn('Django Girls Blog', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text  
@@ -39,12 +43,13 @@ class NewVisitorTest(LiveServerTestCase):
 
         self.assertIn('I have edited my CV', self.browser.find_element_by_class_name('cv_text').text)
 
-class EditCVTest(LiveServerTestCase):
+class EditCVTest(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
 
     def tearDown(self):
+        CVItem.objects.get(text='I have added a new section to my CV').delete()
         self.browser.quit()
 
     def test_can_add_new_cv_section(self):
@@ -74,3 +79,6 @@ class EditCVTest(LiveServerTestCase):
         textsections = self.browser.find_elements_by_class_name('cv_text')
 
         self.assertIn('I have added a new section to my CV', [textsection.text for textsection in textsections])
+
+if __name__ == '__main__':  
+    unittest.main(warnings='ignore')  
