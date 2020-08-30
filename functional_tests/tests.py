@@ -9,7 +9,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         CVItem.objects.create(title='Personal Info', text='email: exs802@student.bham.ac.uk')
-        CVItem.objects.create(title='Work Experience', text="JLP, Apple, Ocado")
+        CVItem.objects.create(title='Work Experience', text='JLP, Apple, Ocado')
         CVItem.objects.create(title='Qualifications', text='GCSE')
         CVItem.objects.create(title='Education', text="Townley Grammar")
         self.browser = webdriver.Firefox()
@@ -25,11 +25,9 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.assertIn('Django Girls Blog', header_text)
 
         self.browser.get(self.live_server_url + '/mycv')
-        time.sleep(5)
         self.assertIn('Eni Segun CV', self.browser.find_element_by_class_name('cv_name').text)
 
         editbox = self.browser.find_element_by_id('id_edit_section')
-
         editbox.click()
         time.sleep(1)
 
@@ -53,7 +51,7 @@ class EditCVTest(StaticLiveServerTestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def best_can_add_new_cv_section(self):
+    def test_can_add_new_cv_section(self):
         self.browser.get(self.live_server_url + '/mycv')
         self.assertIn('Eni Segun CV', self.browser.find_element_by_class_name('cv_name').text)
 
@@ -73,7 +71,6 @@ class EditCVTest(StaticLiveServerTestCase):
         actions.click(textbox)
         actions.send_keys('I have added a new section to my CV')
         actions.perform()
-        actions.reset_actions()
         inputbox.submit()
         time.sleep(2)
 

@@ -13,7 +13,7 @@ class CVPageTest(TestCase):
 
     def test_display_database_cv_sections(self):
         CVItem.objects.create(title='Qualifications', text='GCSE')
-        CVItem.objects.create(title='Education', text="Townley Grammar")
+        CVItem.objects.create(title='Education', text='Townley Grammar')
 
         saved_items = CVItem.objects.all()
 
@@ -30,8 +30,18 @@ class CVPageTest(TestCase):
         CVItem.objects.create(title='Qualifications', text='GCSE')
         response = self.client.get('/mycv/1/edit/')
         self.assertTemplateUsed(response, 'blog/edit_cv.html')
-    
-        
+
+    def test_can_save_a_POST_request(self):
+        response = self.client.post('/mycv/add/', data={'title' : 'new cv section', 'text' : 'anything'})
+
+        self.assertEqual(CVItem.objects.count(), 1)
+        new_item = CVItem.objects.first()
+        self.assertEqual(new_item.text, 'anything')
+
+    def test_can_redirect_after_POST_request(self):
+        response = self.client.post('/mycv/add/', data={'title' : 'new cv section', 'text' : 'anything'})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], '/mycv/')
 
 
 class ItemModelTest(TestCase):
