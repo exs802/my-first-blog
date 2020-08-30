@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h2>Edit {{ cv_section.title }}</h2>
+    <h2>Add New Section</h2>
     <form method="POST" class="cv-form" name="cv_form" >{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>

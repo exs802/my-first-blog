@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import Post, CVItem
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm, CVForm
+from .forms import PostForm, CVForm, NewCVForm
 from django.shortcuts import redirect
 
 
@@ -51,15 +51,25 @@ def show_cv(request):
     return render(request, 'blog/show_cv.html', {'cv': cv})
 
 def edit_cv(request, pk):
-    cvsection = get_object_or_404(CVItem, pk=pk)
-
+    CVItem.objects.get(pk=pk)
+    cv_section = get_object_or_404(CVItem, pk=pk)
     if request.method == "POST":
-        form = CVForm(request.POST, instance=cvsection)
+        form = CVForm(request.POST, instance=cv_section)
         if form.is_valid():
-            cvsection = form.save(commit=False)
-            cvsection.save()
+            cv_section = form.save(commit=False)
+            cv_section.save()
             return redirect('show_cv')
     else:
-        form = CVForm(instance=cvsection)
-    return render(request, 'blog/edit_cv.html', {'form' : form})
+        form = CVForm(instance=cv_section)
+    return render(request, 'blog/edit_cv.html', {'form' : form, 'cv_section' : cv_section})
 
+def add_cv(request):
+    if request.method == "POST":
+        form = NewCVForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('show_cv')
+    else: 
+        form = NewCVForm()
+    return render(request, 'blog/add_cv.html', {'form': form})

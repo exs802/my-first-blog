@@ -9,5 +9,10 @@ class PostForm(forms.ModelForm):
 class CVForm(forms.ModelForm):
     class Meta:
         model = CVItem
+        fields = ('text',)
+
+class NewCVForm(forms.ModelForm):
+    class Meta:
+        model = CVItem
         fields = ('title', 'text',)
      

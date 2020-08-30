@@ -20,5 +20,9 @@
                 <p>{{ cv_section.text|linebreaksbr }}</p>
             </div>
         {% endfor %}
+
+        <div class="new_section">
+            <h3><a href="{% url 'add_cv' %}" id='id_add_section'>Add new section</a></h3>
+        </div>
         </div>
 {% endblock %}

@@ -28,8 +28,10 @@ class CVPageTest(TestCase):
     
     def test_uses_edit_cv_template(self):
         CVItem.objects.create(title='Qualifications', text='GCSE')
-        response = self.client.get('/editcv/1/')
+        response = self.client.get('/mycv/1/edit/')
         self.assertTemplateUsed(response, 'blog/edit_cv.html')
+    
+        
 
 
 class ItemModelTest(TestCase):
