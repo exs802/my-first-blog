@@ -4,14 +4,14 @@
     
         <div class="cv">
             <div class="cv_name">
-                <h1>Eni Segun CV</h1>
+                <h2>Enioluwa Segun</h2>
             </div>
 
         {% for cv_section in cv %}
 
-        <!-- if user.is_authenticated --> 
+        {% if user.is_authenticated %}
             <a class="btn btn-default" id="id_edit_section" href="{% url 'edit_cv' pk=cv_section.pk%}"><span class="glyphicon glyphicon-pencil" ></span></a>
-        <!-- endif -->
+        {% endif %}
 
             <div class="cv_title">
                 <h2>{{ cv_section.title }}</h2>
@@ -21,8 +21,11 @@
             </div>
         {% endfor %}
 
-        <div class="new_section">
-            <h3><a href="{% url 'add_cv' %}" id='id_add_section'>Add new section</a></h3>
-        </div>
+        {% if user.is_authenticated %}
+            <div class="new_section">
+                <h3><a href="{% url 'add_cv' %}" id='id_add_section'>ADD NEW SECTION</a></h3>
+            </div>
+        {% endif %}
+
         </div>
 {% endblock %}
