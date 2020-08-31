@@ -1,0 +1,2 @@
+http://enisegun.pythonanywhere.com/
+https://github.com/exs802/my-first-blog.git
